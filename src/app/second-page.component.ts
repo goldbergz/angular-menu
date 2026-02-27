@@ -18,11 +18,55 @@ import { MenuStateService, MenuItem } from './menu-state.service';
           type="checkbox"
           (change)="onToggle(item, cb.checked)"
         />
-        {{ item.label }} — {{ item.value }}
+        <span class="label-text">{{ item.label }}</span>
+      <span class="label-value">Значение: {{ item.value }}</span>
       </label>
     </li>
   </ul>
-  `
+  `,
+  styles: [`
+    li {
+      padding: 12px 14px;
+      border-radius: 10px;
+      transition: background 0.2s ease;
+    }
+
+    li:hover {
+      background: #f1f5f9;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      cursor: pointer;
+      gap: 4px;
+      position: relative;
+    }
+      .label-text {
+      font-size: 15px;
+      font-weight: 500;
+      margin-left: 28px;
+      line-height: 18px;
+    }
+
+    .label-value {
+      font-size: 13px;
+      color: #2563eb;
+      margin-left: 28px;
+      margin-top: 2px;
+    }
+
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: #2563eb;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  `]
 })
 export class SecondPageComponent {
   constructor(private menuState: MenuStateService) {}
